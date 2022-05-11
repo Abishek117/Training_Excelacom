@@ -6,19 +6,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Product;
 import com.example.demo.ifaces.ProductRepository;
 
 @Controller
 public class ProductController {
-	 
+	
+	
     @Autowired
 	private Product entity;
     
     @Autowired
     private ProductRepository repo;
 	
+    
 	@RequestMapping(value="/product",method=RequestMethod.GET)
 	public String initForm(Model model)
 	{
@@ -28,9 +31,11 @@ public class ProductController {
 		return "addProduct";
 	}
 	
+	
 	@RequestMapping(value="/product",method=RequestMethod.POST)
 	public String submitForm(@ModelAttribute("command") Product entity)
 	{
+		
 		try
 		{
 			this.repo.add(entity);
@@ -40,8 +45,39 @@ public class ProductController {
 		{
 			return "failure";
 		}
+		
+	
+		//int rowAdded = this.repo.add(entity);
+		//return "addProduct";
+	}
+	
+	
+	@RequestMapping(value="/product/srch",method=RequestMethod.GET)
+	public String searchProduct(Model model)
+	{
+		return "searchproduct";
+			
+	}
+	@RequestMapping(value="/product/srch",method=RequestMethod.POST)
+	public String showProduct(@RequestParam("id")int id,Model model) 
+	{
+		Product entity= repo.findById(id);
+		model.addAttribute("found", entity);
+		return "showproduct";
+			
+	}
+
+	
+	@RequestMapping(value="/product/dlte",method=RequestMethod.GET)
+	public String enterID(Model model)
+	{
+		return "deletebyid";
 	}
 	
 	
 
 }
+	
+	
+
+
