@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="abi_emp_2022")
+@Table(name="abi_emp17_2022")
 
 @Data
 @AllArgsConstructor
@@ -26,7 +26,7 @@ public class Employee {
 	@Column(name="employee_name")
 	String employeeName;
 	
-	@Column(name="D_O_B")
+	@Column(name="date_of_birth")
 	LocalDate date;
 	
 	@Column(name="location")

@@ -18,13 +18,28 @@ public class SpringDataJpaTaskApplication {
 		
 		EmployeeService service = cxt.getBean(EmployeeService.class);
 		
-		Employee abi = cxt.getBean(Employee.class);
-		Employee added1 = service.add(abi);
+		Employee empObj = cxt.getBean(Employee.class);
+		
+		Employee added1 = service.add(empObj);
+		
 		if(added1!=null)
 		{
 			System.out.println("One Employee Added");
 		}
-		//service.findAll().forEach(System.out::println);
+		
+//		service.findByDate(LocalDate.of(2001, 03, 17)).forEach(System.out::println);
+//		
+//		service.findByLocation("Sivakasi").forEach(System.out::println);
+//		
+//		System.out.println(service.findBySkillSet("Math"));
+		
+		//System.out.println(service.findByLocationAndSkillSet("Sivakasi", "Swimmer"));
+		
+		System.out.println("*******Now our table is*******");
+		service.findAll().forEach(System.out::println);
+		System.out.println("******************************");
+		
+		
 		cxt.close();
 		
 	
@@ -32,8 +47,10 @@ public class SpringDataJpaTaskApplication {
 	@Bean
 	public Employee abi()
 	{
-		return new Employee(2,"Abi",LocalDate.now(),"Sivakasi","Swimmer",74770351L);
+		return new Employee(3,"Hari",LocalDate.of(2004, 02, 02),"ALPT","Chess",8964533L);
 	}
+	
+	
 	
 
 }

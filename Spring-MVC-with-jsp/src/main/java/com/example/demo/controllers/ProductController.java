@@ -66,13 +66,32 @@ public class ProductController {
 		return "showproduct";
 			
 	}
+	
+	@RequestMapping(value="/product/delete", method=RequestMethod.GET)
+	public String delete(Model model) {
+		
+		model.addAttribute("delete","deleteProduct");
+		return "deleteproduct";
+		
+	}
+	
+	@RequestMapping(value="/product/delete",method=RequestMethod.POST)
+	public String remove(@RequestParam("id")int id, Model model) {
+		int entity = repo.remove(id);
+		model.addAttribute("found",entity);
+		return "deletebyid";
+		
+	}
+	
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public String indexOf(Model model) {
+		model.addAttribute("title","index");
+		return "index";
+		
+	}
 
 	
-	@RequestMapping(value="/product/dlte",method=RequestMethod.GET)
-	public String enterID(Model model)
-	{
-		return "deletebyid";
-	}
+	
 	
 	
 

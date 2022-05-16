@@ -13,13 +13,14 @@ import com.sun.xml.bind.v2.model.core.ID;
 
 public interface EmployeeRepository extends JpaRepository<Employee, ID> {
 	
-//	public List<Employee> findByDate(LocalDate srch);
-//	public List<Employee> findByLocationAndSkillSets(String location,String skillSet);
-	/*@Query(nativeQuery = true,
-			value = "select ,employee_name,department,"
-					+ "phone_number from sp_doctor where doctor_name=:docName or department=:dept")
-	public List<Employee> findByNameOrDept(@Param("docName") String docName, @Param("docDept") String docDept);
-	*/
+	public List<Employee> findByDate(LocalDate findDate);
+	public List<Employee> findByLocation(String findLocation);
+	public List<Employee> findBySkillSet(String findSkillSet);
+
+	
+	@Query(nativeQuery = true,value = "select * from abi_emp17_2022 where location=:location and skillset=:skillSet")
+	public List<Employee> findByLocationAndSkillSet(@Param("location") String empLoc
+			,@Param("skillSet") String empSkill);
 	
 	
 	
