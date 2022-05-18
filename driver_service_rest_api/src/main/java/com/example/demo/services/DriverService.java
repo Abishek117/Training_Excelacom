@@ -4,6 +4,7 @@ package com.example.demo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Driver;
@@ -55,8 +56,36 @@ public class DriverService
 	
 	}
 	
+	public List<Driver> findByName(String srchName)
+	{
+		return this.repo.findByName(srchName);
+	}
+	
+	public List<Driver> srchByMobileNumber(long number)
+	{
+		return this.repo.findByMobileNumber(number);
+	}
+	
+	public List<Driver> srchByRating(double rating)
+	{
+		return this.repo.searchByRating(rating);
+	}
+	
+	public int updateRating(int id,double updatedRating)
+	{
+		return this.repo.modifyRating(id,updatedRating);
+	}
+	
+	public int updateId(int id,int updatedId)
+	{
+		return this.repo.modifyId(id, updatedId);
+	}
+	
+	public List<Driver> sortedList(String sortName)
+	{
+		return this.repo.findAll(Sort.by(sortName));
+	}
 	
 	
-	
-
 }
+
