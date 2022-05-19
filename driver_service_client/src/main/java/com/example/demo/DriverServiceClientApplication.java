@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.model.Driver;
@@ -15,7 +16,8 @@ public class DriverServiceClientApplication {
 		ConfigurableApplicationContext ctx =  SpringApplication.run(DriverServiceClientApplication.class, args);
 		Client client = ctx.getBean(Client.class);
 		System.out.println(client.invokeGetAll());
-		
+	}
+		/*
 		Driver[] list = client.invokeAllAsObject();
 
 		for(Driver eachDriver:list)
@@ -39,4 +41,19 @@ public class DriverServiceClientApplication {
 		return new RestTemplate();
 	}
 
-}
+}*/
+		
+		@Bean
+		public RestTemplate template() {
+			RestTemplate template=new RestTemplate();
+			
+			template.getInterceptors().add(interceptor());
+			return template;
+		}
+		
+		@Bean
+		public BasicAuthenticationInterceptor interceptor()
+		{
+			return new BasicAuthenticationInterceptor("india", "ind");
+		}
+	}

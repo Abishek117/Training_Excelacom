@@ -20,7 +20,7 @@ import com.example.demo.model.Driver;
 public class Client 
 {
 	
-	String BASEURL = "http://localhost:8080/api/v1/drivers";
+	String BASEURL = "http://localhost:8080/api/v1/user";
 	private RestTemplate template;
 	
 	@Autowired
