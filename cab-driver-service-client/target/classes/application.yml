@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: driver-service-client
+
+  datasource:
+    url: jdbc:oracle:thin:@10.90.1.107:1521/SIT
+    username: HR
+    password: HR
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8085      

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: driver-service-client
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Abishek.R
+Implementation-Vendor-Id: com.example
+Build-Jdk: 1.8.0_171
+Implementation-URL: https://spring.io/projects/spring-boot/driver-serv
+ ice-client
+Created-By: Maven Integration for Eclipse
+
